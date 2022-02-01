@@ -1,0 +1,425 @@
+.connectButton {
+    margin-top:5%;
+    margin-bottom:4%;
+}
+
+.connectButtonHoverRugz{
+    margin-top:20%;
+    margin-bottom:4%;
+}
+
+.mintingAnnouncement{
+    margin-left:23%;
+}
+
+#button {
+    background-color: white;
+    color:black;
+    margin-left:46%;
+}
+
+#button:hover {
+    background-color: #cfcfcf;
+    color: #3c3c3c;
+}
+
+.bannerContainer {
+    width: 100vw;
+    height: 80vh;
+}
+
+.banner {
+    height: 100%;
+    width: 100%;
+}
+
+.city{
+    padding-top:3%;
+    padding-bottom:1%;
+    background-image: url("bg.png");
+    width:100%;
+    height:90vh;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+li{
+list-style-type:none
+}
+.video {
+    margin-left: 25%;
+}
+
+.mintContainer {
+    width: 40%;
+    margin: 0% 30%;
+    margin-top:10px;
+    text-align: center;
+}
+
+.mintContainer p{
+    margin-bottom:0;
+    font-size:0.90em;
+}
+
+#mintButton {
+    width: 5%;
+    padding-left: 1.5%;
+    margin: 4% 47.5%; /*todo change 4 to 0*/
+    margin-bottom:4%; /*todo change 4 to 2*/
+    margin-top:5px;
+}
+
+#roadMapBg{
+    padding:4% 0;
+    background-image: url("solana.jpg");
+    width:100%;
+    height:100%;
+    background-size: cover;
+}
+
+.roadMapContainer {
+    padding:0;
+    width: 50%;
+    margin: 0 25%;
+}
+
+.roadMapContainer li, p{
+    font-family: "Space Mono";
+}
+
+#about{
+    background-color: #141414;
+    width:100%;
+    padding-top: 5%;
+    padding-bottom:5%;
+}
+
+.aboutContainer{
+    width:60%;
+    text-align:center;
+    margin-top:10%;
+    margin-bottom: 10%;
+    margin:0 auto;
+}
+
+.aboutContainer p{
+    font-family: 'Space Mono';
+}
+
+.videoContainer{
+    width:100%;
+    height:100vh;
+    background-color: #252525;
+}
+
+#commercial{
+    margin-left:12%;
+    margin-top:4%;
+}
+
+.featuredRugz{
+    background-color: #1f1f1f;
+    width:100%;
+    height:100%;
+    margin:0 auto;
+    padding-top:2%;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+  
+.firstCol{
+    margin-left:10%;
+}
+
+  /* Create two equal columns that sits next to each other */
+  .column {
+    flex: 25%;
+    padding: 0 4px;
+  }
+  
+  .column img {
+    width: 70%;
+    margin: 2% 0;
+    vertical-align: middle;
+  }
+
+  .grow img {
+    height: 300px;
+    width: 300px;
+   
+    -webkit-transition: all 1s ease;
+       -moz-transition: all 1s ease;
+         -o-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+            transition: all 1s ease;
+  }
+   
+  .grow img:hover {
+    width: 310px;
+    height: 310px;
+  }
+
+  .emptyPhoto{
+      width:20%;
+      height:20%;
+  }
+
+  .rarityContainer{
+    background-color: #1f1f1f;
+    width:100%;
+    height:100%;
+    margin:0 auto;
+    padding-bottom:5%;
+    padding-top:2%;
+    text-align:center;
+}
+
+.rowRarity{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+
+  h3{
+    margin-top:5%;
+  }
+  
+.firstColRarity{
+    margin-left:0%;
+}
+
+  /* Create two equal columns that sits next to each other */
+  .columnRarity {
+    flex: 15%;
+    padding: 0 4px;
+  }
+  
+  .columnRarity img {
+    width: 80%;
+    margin: 5%;
+    vertical-align: middle;
+  }
+.h1 {
+    text-align: center;
+}
+
+.hide{
+    display:none;
+} 
+
+.smallerText{
+    font-size:0.95em;
+}
+
+.progressRed{
+    position: relative;
+    height: 10px;
+    width: 80%;
+    border: 2px solid red;
+    border-radius: 15px;
+    margin-left:10%;
+}
+
+.progressYellow{
+    position: relative;
+    height: 10px;
+    width: 80%;
+    border: 2px solid #e7ff0f;
+    border-radius: 15px;
+    margin-left:10%;
+}
+
+
+.progressRed .red{
+    position: absolute;
+    background-color: red;
+    height: 10px;
+    border-radius: 15px;
+    width: 22%   
+}
+
+.progressRed .red50{
+    position: absolute;
+    background-color: red;
+    height: 10px;
+    border-radius: 15px;
+    width: 50%   
+}
+
+
+
+.progressYellow .yellow{
+    position: absolute;
+    background-color: #e7ff0f;
+    width: 12%;
+    height: 10px;
+    border-radius: 15px;
+}
+
+.progressGreen{
+    position: relative;
+    height: 10px;
+    width: 80%;
+    border: 2px solid #13ee49;
+    border-radius: 15px;
+    margin-left:10%;
+}
+
+
+.progressGreen .green{
+    position: absolute;
+    background-color: #13ee49;
+    width: 0px;
+    height: 10px;
+    border-radius: 15px;
+    width:1%;
+}
+
+@media only screen and (max-width: 1100px) {
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 4px;
+      }
+      
+    .firstCol{
+        margin-left:0%;
+    }
+    
+    /* Create two equal columns that sits next to each other */
+    .column {
+    flex: 50%;
+    }
+    
+    .column img {
+        width: 70%;
+        height:70%;
+        vertical-align: middle;
+        margin-left:15%;
+    }
+
+    p{
+        font-size:0.8em;
+    }
+
+    .smallerText{
+        font-size: 0.6em;
+    }
+
+    .progressGreen, .progressRed, .progressYellow{
+        width:60%;
+        margin-left:20%;
+    }
+
+}
+
+@media only screen and (max-width: 900px) {
+    #button {
+        font-size: 0.7em;
+        margin-left:39%;
+    }
+
+    .aboutContainer, .featuredRugz{
+        font-size: 0.7em;
+    }
+
+    .roadMapContainer {
+        font-size: 0.7em;
+    }
+
+    .city{
+        display:none;
+    }
+
+    #gif{
+        display:none;
+    }
+
+    .connectButton{
+        display:none;
+    }
+
+    .videoContainer{
+        height: 37vh;
+    }
+
+
+    .featuredRugz{
+        width:100%;
+        padding-left:5%;
+        margin-bottom:5%;
+        height:100%;
+    }
+
+    #featuredRugTitle{
+        margin-right:7%;
+    }
+    
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 4px;
+      }
+      
+    .firstCol{
+        margin-left:0%;
+    }
+    
+    /* Create two equal columns that sits next to each other */
+    .column {
+    flex: 50%;
+    }
+    
+    .column img {
+        width: 70%;
+        vertical-align: middle;
+        margin-left:10%;
+    }
+
+    .rarityContainer{
+        width:100%;
+        height:100%;
+        margin:0 auto;
+        height:100%;
+    }
+    
+    .rowRarity {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 4px;
+      }
+      
+    #firstColRarity{
+        margin-left:0%;
+    }
+    
+    /* Create two equal columns that sits next to each other */
+    .columnRarity {
+    flex: 50%;
+    }
+    
+    .columnRarity img {
+        width: 70%;
+        vertical-align: middle;
+        margin-left:8%;
+    }
+    
+    p{
+        font-size:0.6em;
+    }
+
+    .smallerText{
+        font-size: 0.4em;
+    }
+
+    .progressGreen, .progressRed, .progressYellow{
+        width:40%;
+        margin-left:30%;
+    }
+
+}
