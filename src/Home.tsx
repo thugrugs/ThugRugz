@@ -262,7 +262,7 @@ const routeChange = () =>{
       
       <MintContainer>
         {!wallet ? (
-           <div className="connectButton"><ConnectButton id="button">Connect Wallet</ConnectButton></div>
+           <div className="connectButton"><ConnectButton disabled id="button">Coming Soon</ConnectButton></div>
         ) : (
           <div id="mint">
             <MintButton style={{paddingLeft: "1.5%", marginBottom:"1%"}} id="mintButton"
@@ -306,18 +306,14 @@ const routeChange = () =>{
         </Alert>
       </Snackbar>
 </div>
-      
-<div className="videoContainer">
-  <video id="commercial" src="commercial.mov" width="75%" controls></video> 
-</div>
 
       {<div id="about"><div className="aboutContainer">
         <h1 className="h1">ABOUT</h1>
         <p>Rugz that are thugs... 
         </p><p>A collection of 3,333 uniquely generated collectible ThugRugz available for minting on the Solana blockchain.  
         </p><p>Other than just being a development team, we here at THUGRUGZ treasure the Solana ecosystem because we were traders before we were investors on this project. Solana changed my life, and seeing this downtrend in the ecosystem is so heartbreaking. This is because people just keep shitposting projects, and we aim to change EVERYTHING with this project.
-        </p><p>How? Let me explain. When you mint a THUGRUG, not only are you getting a badass NFT, but you're also getting a lottery ticket to be entered in a drawing for .1-5 SOL! YES! Many of you will randomly receive small to large amounts of SOL just for minting. This is the first way we intend to give back to the community. We also plan on airdropping random holders NFTs.
-	      </p><p>You will also be entered in a draw for a TESLA and we are planning various merch drops..
+        </p><p>How? Let me explain. When you mint a THUGRUG, not only are you getting a badass NFT, but you're also getting an entry into our community. Many of you will randomly receive small to large amounts of SOL just for minting. This is the first way we intend to give back to the community. We also plan on airdropping random holders NFTs.
+	      </p><p>You will also be entered in a draw for various merch drops and you can earn more entries by participating in the community.
 	      </p><p>Just know the dev team is comprised of hardworking people who LOVE nfts and hope to bring excitement and life back into the Solana ecosystem. That’s the best thing any REAL project can do for a community.</p>
         </div></div>}
 
@@ -348,7 +344,7 @@ const routeChange = () =>{
           </div>
         </div>}
 
-      {<div id="roadMapBg"><div id="roadmap" className="roadMapContainer"><h1 className="h1">ROADMAP</h1><h3>PHASE 1</h3><ul><li>THUG RUGZ GO LIVE: LAUNCH 3,333 RUGZ</li><ul><li>NO MAX PER WALLET</li><li>MINTERS WILL BE RANDOMLY SELECTED TO RECEIVE .1 - 5 SOL</li><li>HOVERRUGZ MINIGAME(ONLY AVAILABLE TO HOLDERS)</li></ul></ul><h3>PHASE 2</h3><ul><li>TESLA MODEL 3 GIVEAWAY</li><li>ROLEX GIVEAWAY</li><li>HOVERRUGZ GOES P2E WITH CUSTOMIZATION</li></ul><h3>PHASE 3</h3><ul><li>NFT AIRDROPS TO RANDOM HOLDERS</li><li>50 LUCKY HOLDERS WILL BE CHOSEN TO RECEIVE 1 SOL</li></ul><h3>PHASE 4</h3><ul><li>6.9% OF MINTING PROCEEDS WILL GO TO ST. JUDE CHILDREN'S HOSPITAL</li></ul><h3>PHASE 5</h3><ul><li>$RGZ TOKEN DEVELOPMENT</li><li>OUR FINAL GOAL IS TO RANDOMLY SELECT 1 LUCKY HOLDER A WEEK THIS PERSON WILL HAVE THEIR RUG SPECIALLY CRAFTED FOR THEM. WE WILL DO THIS OVER THE COURSE OF A YEAR OR UNTIL 52 RUGZ ARE MAILED OUT.</li></ul><h3>THUG RUGZ PART 2 COMING IN 2022</h3></div></div>}
+      {<div id="roadMapBg"><div id="roadmap" className="roadMapContainer"><h1 className="h1">ROADMAP</h1><h3>PHASE 1</h3><ul><li>THUG RUGZ GO LIVE: LAUNCH 3,333 RUGZ</li><ul><li>NO MAX PER WALLET</li><li>MINTERS WILL BE RANDOMLY SELECTED TO RECEIVE SOL</li><li>HOVERRUGZ MINIGAME</li></ul></ul><h3>PHASE 2</h3><ul><li>HOVERRUGZ GOES P2E(SOL) WITH CUSTOMIZATION</li></ul><h3>PHASE 3</h3><ul><li>NFT AIRDROPS TO RANDOM HOLDERS</li></ul><h3>PHASE 4</h3><ul><li>OUR FINAL GOAL IS TO RANDOMLY SELECT A FEW HOLDERS TO HAVE THEIR RUG SPECIALLY CRAFTED FOR THEM.</li></ul><h3>THUG RUGZ PART 2..</h3></div></div>}
       <div id="rarity" className="rarityContainer">
         <h1 className="h1"> 
           <Typewriter
