@@ -408,6 +408,7 @@ const Home = (props: HomeProps) => {
         <Paper
           style={{
             padding: 24,
+            paddingBottom: 24,
             backgroundColor: '#151A1F',
             borderRadius: 6,
           }}
@@ -415,7 +416,167 @@ const Home = (props: HomeProps) => {
           {!wallet.connected ? (
             <ConnectButton>Connect Wallet</ConnectButton>
           ) : (
-           <Link to="/HoverRugz" id="hoverRugzPlayButton">Play HoverRugz</Link>
+            <>
+              {candyMachine && (
+                <Grid
+                  container
+                  direction="row"
+                  justifyContent="center"
+                  wrap="nowrap"
+                >
+                  <Grid item xs={3}>
+                    <Typography variant="body2" color="textSecondary">
+                      Remaining
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      color="textPrimary"
+                      style={{
+                        fontWeight: 'bold',
+                      }}
+                    >
+                      {`${itemsRemaining}`}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Typography variant="body2" color="textSecondary">
+                      {isWhitelistUser && discountPrice
+                        ? 'Discount Price'
+                        : 'Price'}
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      color="textPrimary"
+                      style={{ fontWeight: 'bold' }}
+                    >
+                      {isWhitelistUser && discountPrice
+                        ? `◎ ${formatNumber.asNumber(discountPrice)}`
+                        : `◎ ${formatNumber.asNumber(
+                            candyMachine.state.price,
+                          )}`}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={5}>
+                            <Typography
+                              variant="caption"
+                              align="center"
+                              display="block"
+                              style={{ fontWeight: 'bold' }}
+                            >
+                              MINT TBA
+                            </Typography>
+                  </Grid>
+                </Grid>
+              )}
+              <MintContainer>
+                {candyMachine?.state.isActive &&
+                candyMachine?.state.gatekeeper &&
+                wallet.publicKey &&
+                wallet.signTransaction ? (
+                  <GatewayProvider
+                    wallet={{
+                      publicKey:
+                        wallet.publicKey ||
+                        new PublicKey(CANDY_MACHINE_PROGRAM),
+                      //@ts-ignore
+                      signTransaction: wallet.signTransaction,
+                    }}
+                    gatekeeperNetwork={
+                      candyMachine?.state?.gatekeeper?.gatekeeperNetwork
+                    }
+                    clusterUrl={
+                      props.network === WalletAdapterNetwork.Devnet
+                        ? 'https://api.devnet.solana.com'
+                        : rpcUrl
+                    }
+                    handleTransaction={async (transaction: Transaction) => {
+                      setIsUserMinting(true);
+                      const userMustSign = transaction.signatures.find(sig =>
+                        sig.publicKey.equals(wallet.publicKey!),
+                      );
+                      if (userMustSign) {
+                        setAlertState({
+                          open: true,
+                          message: 'Please sign one-time Civic Pass issuance',
+                          severity: 'info',
+                        });
+                        try {
+                          transaction = await wallet.signTransaction!(
+                            transaction,
+                          );
+                        } catch (e) {
+                          setAlertState({
+                            open: true,
+                            message: 'User cancelled signing',
+                            severity: 'error',
+                          });
+                          // setTimeout(() => window.location.reload(), 2000);
+                          setIsUserMinting(false);
+                          throw e;
+                        }
+                      } else {
+                        setAlertState({
+                          open: true,
+                          message: 'Refreshing Civic Pass',
+                          severity: 'info',
+                        });
+                      }
+                      try {
+                        await sendTransaction(
+                          props.connection,
+                          wallet,
+                          transaction,
+                          [],
+                          true,
+                          'confirmed',
+                        );
+                        setAlertState({
+                          open: true,
+                          message: 'Please sign minting',
+                          severity: 'info',
+                        });
+                      } catch (e) {
+                        setAlertState({
+                          open: true,
+                          message:
+                            'Solana dropped the transaction, please try again',
+                          severity: 'warning',
+                        });
+                        console.error(e);
+                        // setTimeout(() => window.location.reload(), 2000);
+                        setIsUserMinting(false);
+                        throw e;
+                      }
+                      await onMint();
+                    }}
+                    broadcastTransaction={false}
+                    options={{ autoShowModal: false }}
+                  >
+                    <MintButton
+                      candyMachine={candyMachine}
+                      isMinting={isUserMinting}
+                      setIsMinting={val => setIsUserMinting(val)}
+                      onMint={onMint}
+                      isActive={
+                        isActive ||
+                        (isPresale && isWhitelistUser && isValidBalance)
+                      }
+                    />
+                  </GatewayProvider>
+                ) : (
+                  <MintButton 
+                    candyMachine={candyMachine}
+                    isMinting={isUserMinting}
+                    setIsMinting={val => setIsUserMinting(val)}
+                    onMint={onMint}
+                    isActive={
+                      isActive ||
+                      (isPresale && isWhitelistUser && isValidBalance)
+                    }
+                  />
+                )}
+              </MintContainer>
+            </>
           )}
         </Paper>
       </Container>
@@ -1289,4 +1450,4 @@ const getCountdownDate = (
   );
 };
 
-export default Home;
+//export default Home;

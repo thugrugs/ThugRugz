@@ -23,7 +23,7 @@ import Typewriter from "typewriter-effect";
 import gameLogo from 'gameLogo.png';
 
 import {
-  CandyMachine,
+  CandyMachineAccount,
   awaitTransactionSignatureConfirmation,
   getCandyMachineState,
   mintOneToken,
@@ -32,7 +32,7 @@ import {
 import { Filter } from "@material-ui/icons";
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import { off } from "process";
-
+import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 const ConnectButton = styled(WalletDialogButton)``;
 
 const CounterText = styled.span``; // add your styles here
@@ -42,12 +42,11 @@ const MintContainer = styled.div``; // add your styles here
 const MintButton = styled(Button)``; // add your styles here
 
 export interface HoverRugzProps {
-  candyMachineId: anchor.web3.PublicKey;
-  config: anchor.web3.PublicKey;
+  candyMachineId?: anchor.web3.PublicKey;
   connection: anchor.web3.Connection;
-  startDate: number;
-  treasury: anchor.web3.PublicKey;
   txTimeout: number;
+  rpcHost: string;
+  network: WalletAdapterNetwork;
 }
 
 const HoverRugz = (props: HoverRugzProps) => {
@@ -69,10 +68,8 @@ const HoverRugz = (props: HoverRugzProps) => {
   
   let mintedItems : any[] | undefined = undefined;
 
-  const [startDate, setStartDate] = useState(new Date(props.startDate));
-
   const wallet = useAnchorWallet();
-  const [candyMachine, setCandyMachine] = useState<CandyMachine>();
+  const [candyMachine, setCandyMachine] = useState<CandyMachineAccount>();
 
   const getAllNftData = async () => {
     try {
@@ -125,24 +122,23 @@ const refreshCandyMachineState = () => {
     (async () => {
       if (!wallet) return;
 
-      const {
-        candyMachine,
-        goLiveDate,
-        itemsAvailable,
-        itemsRemaining,
-        itemsRedeemed,
-      } = await getCandyMachineState(
-        wallet as anchor.Wallet,
-        props.candyMachineId,
-        props.connection
-      );
+      // const {
+      //   candyMachine,
+      //   goLiveDate,
+      //   itemsAvailable,
+      //   itemsRemaining,
+      //   itemsRedeemed,
+      // } = await getCandyMachineState(
+      //   wallet as anchor.Wallet,
+      //   props.candyMachineId,
+      //   props.connection
+      // );
 
       setItemsAvailable(itemsAvailable);
       setItemsRemaining(itemsRemaining);
       setItemsRedeemed(itemsRedeemed);
 
       setIsSoldOut(itemsRemaining === 0);
-      setStartDate(goLiveDate);
       setCandyMachine(candyMachine);
     })();
   };
@@ -151,12 +147,6 @@ const refreshCandyMachineState = () => {
 
   useLayoutEffect(() => {
     setHasThugRug(true);
-  })
-
-  useEffect(() => {
-    getNftTokenData();
-    hasThugRugNFT();
-
     (async () => {
       console.log('useeffect async')
       var start = document.getElementById("start");
@@ -169,6 +159,7 @@ const refreshCandyMachineState = () => {
       var jumping = 0;
 
       var startButton = document.getElementById("start");
+      console.log(startButton);
       startButton?.addEventListener('click', () => {
         console.log('clicked')
         startGame();
@@ -291,6 +282,13 @@ const refreshCandyMachineState = () => {
       };
 
     })();
+  })
+
+  useEffect(() => {
+    getNftTokenData();
+    hasThugRugNFT();
+
+    
   }, [wallet, props.connection]);
 
   useEffect(refreshCandyMachineState, [
